@@ -19,7 +19,7 @@ export async function embedText(text: string, type: 'query' | 'db' = 'query'): P
   }
 
   const data = await res.json();
-  return data.data[0].embedding;
+  return data.vectors;
 }
 
 export async function embedBatch(texts: string[], type: 'query' | 'db' = 'query'): Promise<number[][]> {
@@ -43,5 +43,5 @@ export async function embedBatch(texts: string[], type: 'query' | 'db' = 'query'
   }
 
   const data = await res.json();
-  return data.data.map((item: any) => item.embedding);
+  return data.vectors;
 }

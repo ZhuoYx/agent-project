@@ -9,7 +9,7 @@ export interface Chunk {
 const CHUNK_SIZE = 500; // 每个约500字
 const OVERLAP = 50; // 相邻块重叠50字
 
-export async function parsePdfToChunks(buffer: Buffer): Promise<Chunk[]> {
+export async function parsePdfToChunks(buffer: Uint8Array): Promise<Chunk[]> {
   const parsed = new PDFParse(buffer);
   const fullText = (await parsed.getText()).text;
 

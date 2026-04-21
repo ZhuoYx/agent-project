@@ -7,11 +7,12 @@ export default defineEventHandler(async (event) => {
   }
 
   // 清空旧数据(简单实现，实际项目可按文件ID管理)
-  vectorStore.clear();
+  // vectorStore.clear();
 
   // 1. 解析PDF
   const buffer = Buffer.from(await file.arrayBuffer());
-  const chunks = await parsePdfToChunks(buffer);
+  const unit8Array = new Uint8Array(buffer);
+  const chunks = await parsePdfToChunks(unit8Array);
 
   // 2. 批量Embedding
   const BATCH_SIZE = 20;

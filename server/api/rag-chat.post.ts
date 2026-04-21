@@ -17,7 +17,7 @@ export default defineEventHandler(async (event) => {
 
   // 2. 问题向量化 + 检索
   const queryVector = await embedText(lastQuestion)
-  const relevantDocs = vectorStore.search(queryVector)
+  const relevantDocs = vectorStore.search(queryVector, 10)
 
   // 3. 拼装上下文
   const context = relevantDocs
